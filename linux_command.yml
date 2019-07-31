@@ -1,0 +1,12 @@
+---
+- name: execute operator command
+  hosts: all
+  vars: 
+    linux_command: hostname
+
+  tasks:
+  - name: "Run {{ linux_command }} command" 
+    command: "{{ linux_command }}"
+    register: myoutput
+    
+  - debug: var=myoutput.stdout_lines
