@@ -1,0 +1,20 @@
+
+---
+- name: "Create a new OpenStack flavor"
+  hosts: all
+  vars:
+  - flavor_name: medium
+  - flavor_ram: 2048
+  - flavor_vcpu: 2
+  - flavor_disk: 10
+  - flavor_ephe: 0
+
+  tasks:
+  - name: "Create {{ flavor_name }} flavor with {{ flavor_ram }}MB of RAM, {{ flavor_vcpu }} virtual CPU, and {{ flavor_disk }}GB of local disk, and {{ flavor_ephe }}GB of ephemeral."
+    os_nova_flavor:
+      state: present
+      name: "{{ flavor_name }}"
+      ram: "{{ flavor_ram }}"
+      vcpus: "{{ flavor_vcpu }}"
+      disk: "{{ flavor_disk }}"
+      ephemeral: "{{ flavor_ephe }}"
