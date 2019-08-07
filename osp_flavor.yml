@@ -13,6 +13,7 @@
   - name: "Create {{ flavor_name }} flavor with {{ flavor_ram }}MB of RAM, {{ flavor_vcpu }} virtual CPU, and {{ flavor_disk }}GB of local disk, and {{ flavor_ephe }}GB of ephemeral."
     os_nova_flavor:
       state: present
+      validate_certs: no
       name: "{{ flavor_name }}"
       ram: "{{ flavor_ram }}"
       vcpus: "{{ flavor_vcpu }}"
