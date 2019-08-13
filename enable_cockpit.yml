@@ -1,0 +1,61 @@
+---
+- name: configure Cockpit
+  hosts: all
+  handlers: 
+  - name: restart firewalld
+    service: name=firewalld state=restarted
+
+  tasks:
+  - name: fetch mirror config
+    get_url:
+      url: http://workstation.example.com/pub/mirror.repo
+      dest: /etc/yum.repos.d/mirror.repo
+
+  - name: remove legacy repo config
+    file:
+      path: /etc/yum.repos.d/rhel7.repo
+      state: absent
+
+  - name: install yum-config-manager
+    yum:
+      name: yum-utils
+      state: present
+
+  - name: enable repos
+    shell: yum-config-manager --enable rhel-7-server-extras-rpms --enable rhel-7-server-optional-rpms &> /dev/null
+
+  - name: install cockpit packages
+    yum:
+      name: 
+      - cockpit
+      - cockpit-dashboard
+      state: installed
+
+  - name: make sure firewalld is installed
+    yum: 
+      name: firewalld 
+      state: present
+    when: (ansible_distribution_major_version=="7" and ansible_distribution=="RedHat")
+    notify: restart firewalld 
+
+  - name: make sure firewalld is running
+    service: 
+      name: firewalld 
+      state: started 
+      enabled: yes
+    when: (ansible_distribution_major_version=="7" and ansible_distribution=="RedHat")
+
+  - name: open firewall port 9090/tcp
+    firewalld:
+      state: enabled
+      immediate: true
+      permanent: true
+      port: 9090/tcp
+    notify: restart firewalld
+
+  - name: start and enable the service
+    service:
+      name: cockpit
+      state: started
+      enabled: true
+      
