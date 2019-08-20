@@ -35,7 +35,7 @@
         networks:
         - name: VM Network
           type: dhcp
-        - vlan: VM Network
+        #- vlan: VM Network
         hardware:
           memory_mb: "{{ vm_memory | default(1024) }}"
           num_cpus: "{{ vm_cpus | default(1) }}"
