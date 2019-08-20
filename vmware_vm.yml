@@ -29,7 +29,7 @@
         folder: /VMs
         state: poweredon
         disk:
-          - size_gb: "{{ disk_size | default(10) }}"
+          - size_gb: "{{ disk_size | default(20) }}"
             type: thin
             datastore: "{{ datastore }}"
         networks:
