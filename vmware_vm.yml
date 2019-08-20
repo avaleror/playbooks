@@ -22,9 +22,12 @@
         username: "{{ vcenter_user }}"
         password: "{{ vcenter_pass }}"
         esxi_hostname: "{{ esxhost }}"
+        validate_certs: no
         datacenter: Datacenter
         name: "{{ vm_name }}"
         template: "{{ vmtemplate }}"
+        folder: /VMs
+        state: poweredon
         disk:
           - size_gb: "{{ disk_size | default(10) }}"
             type: thin
