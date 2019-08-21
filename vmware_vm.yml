@@ -6,24 +6,25 @@
   gather_facts: false
   connection: local
   vars:
-    vcenter_hostname: vcenter.example.com
-    vcenter_user: administrator@vsphere.local
     vcenter_pass: password
     esxhost: esx1.example.com
     datastore: NFS
     vmtemplate: RHEL 7
     vm_name: newvm
+    vm_memory: 1024
+    vm_cpus: 1
 
   tasks:
     - name: Create VM from template
       vmware_guest:
         validate_certs: False
-        hostname: "{{ vcenter_hostname }}"
-        username: "{{ vcenter_user }}"
+        hostname: vcenter.example.com
+        username: administrator@vsphere.local
         password: "{{ vcenter_pass }}"
+        datacenter: "Datacenter"
+        cluster: "Cluster 1"
         esxi_hostname: "{{ esxhost }}"
         validate_certs: no
-        datacenter: Datacenter
         name: "{{ vm_name }}"
         template: "{{ vmtemplate }}"
         folder: /VMs
@@ -37,7 +38,12 @@
           type: dhcp
         #- vlan: VM Network
         hardware:
-          memory_mb: "{{ vm_memory | default(1024) }}"
+          memory_mb: "{{ vm_memory }}"
+          num_cpus: "{{ vm_cpus }}"
+          num_cpu_cores_per_socket: 1
+
+        wait_for_ip_address: True
+        state: presentult(1024) }}"
           num_cpus: "{{ vm_cpus | default(1) }}"
           num_cpu_cores_per_socket: "{{ cores_socket | default(1) }}"
 
