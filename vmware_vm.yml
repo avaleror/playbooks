@@ -22,7 +22,6 @@
         username: administrator@vsphere.local
         password: "{{ vcenter_pass }}"
         datacenter: "Datacenter"
-        cluster: "Cluster 1"
         esxi_hostname: "{{ esxhost }}"
         validate_certs: no
         name: "{{ vm_name }}"
