@@ -25,6 +25,7 @@
       data:
         options:
           vm_name: myvm001
+          vm_target_name: myvm001
     register: name
           
   - name: Print the result
