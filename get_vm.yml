@@ -4,7 +4,7 @@
   connection: local
   vars:
   - manageiq_connection:
-      url: 'https://cfui.example.com:3000'
+      url: 'https://cfui.example.com'
       username: 'admin'
       password: 'r3dh4t1!'
       automate_workspace: ''
