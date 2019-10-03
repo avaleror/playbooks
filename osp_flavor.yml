@@ -1,7 +1,7 @@
 
 ---
 - name: "Create a new OpenStack flavor"
-  hosts: all
+  hosts: overcloud.example.com
   vars:
   - flavor_name: medium
   - flavor_ram: 2048
@@ -12,11 +12,6 @@
   tasks:
   - name: "Create {{ flavor_name }} flavor with {{ flavor_ram }}MB of RAM, {{ flavor_vcpu }} virtual CPU, and {{ flavor_disk }}GB of local disk, and {{ flavor_ephe }}GB of ephemeral."
     os_nova_flavor:
-      auth:
-        auth_url: https://overcloud.example.com
-        username: admin
-        password: r3dh4t1!
-        project_name: admin
       state: present
       validate_certs: no
       name: "{{ flavor_name }}"
