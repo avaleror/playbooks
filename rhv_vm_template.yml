@@ -6,11 +6,11 @@
 
   tasks:
     - name: Create vm from template and create all disks on specific storage domain
-        ovirt_vm:
-          name: "{{ vmname }}"
-          cluster: Default
-          template: RHEL-7.6
-          storage_domain: data
-          nics:
-          - name: eth0
-            network: "ovirtmgmt"
+      ovirt_vm:
+        name: "{{ vmname }}"
+        cluster: Default
+        template: RHEL-7.6
+        storage_domain: data
+        nics:
+        - name: eth0
+          network: "ovirtmgmt"
