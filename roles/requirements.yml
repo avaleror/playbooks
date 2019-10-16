@@ -2,3 +2,4 @@
 - src: syncrou.manageiq-automate
 - src: syncrou.manageiq-vmdb
 - src: ovirt.vm-infra
+- src: ovirt.infra
