@@ -5,7 +5,7 @@
 
   vars_files:
     # Contains encrypted `engine_password` varibale using ansible-vault
-    - passwords.yml
+    #- passwords.yml
 
   vars:
     engine_fqdn: rhvm.example.com
