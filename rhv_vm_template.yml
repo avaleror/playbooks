@@ -1,16 +1,34 @@
-- name: New VM in RHV 
+---
+- name: Deploy VM in RHV
   hosts: localhost
   connection: local
-  vars:
-    vmname: forum 001
+  gather_facts: false
 
-  tasks:
-    - name: Create vm from template and create all disks on specific storage domain
-      ovirt_vm:
-        name: "{{ vmname }}"
-        cluster: Default
-        template: RHEL-7.6
-        storage_domain: data
-        nics:
-        - name: eth0
-          network: "ovirtmgmt"
+#  vars_files:
+#    # Contains encrypted `engine_password` variable using ansible-vault
+#    - passwords.yml
+
+  vars:
+    wait_for_ip: true
+
+    test_vm:
+      cluster: default
+      state: running
+      domain: example.com
+      template: RHEL-7.6
+      memory: 2GiB
+      cores: 2
+      #ssh_key: ssh-rsa AAA...LGx user@fqdn
+      disks:
+        - size: 10GiB
+          name: data
+          storage_domain: data
+          interface: virtio
+
+    vms:
+      - name: testvm001
+        tag: test
+        profile: "{{ test_vm }}"
+
+  roles:
+    - ovirt.vm-infra
