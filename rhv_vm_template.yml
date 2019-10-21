@@ -20,7 +20,7 @@
       cores: 2
       #ssh_key: ssh-rsa AAA...LGx user@fqdn
       disks:
-        - size: 10GiB
+        - size: 20GiB
           name: data
           storage_domain: data
           interface: virtio
