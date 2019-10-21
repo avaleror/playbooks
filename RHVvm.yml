@@ -17,6 +17,7 @@
         cpu_shares: 1024
         type: server
         operating_system: rhel_7x64
+        storage_domain: data
         disks:
           - name: rhel7_disk
             bootable: True
