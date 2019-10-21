@@ -12,7 +12,7 @@
     wait_for_ip: true
 
     test_vm:
-      cluster: default
+      cluster: Default
       state: running
       domain: example.com
       template: RHEL-7.6
