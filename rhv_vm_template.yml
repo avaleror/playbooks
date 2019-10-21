@@ -26,7 +26,7 @@
           interface: virtio
 
     vms:
-      - name: testvm0001
+      - name: testvm0002
         tag: test
         profile: "{{ test_vm }}"
 
