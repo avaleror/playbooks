@@ -9,7 +9,7 @@
 #    engine_user: admin@internal
 #    engine_password: 123456
 #    engine_cafile: /etc/pki/ovirt-engine/ca.pem
-     no_log: false
+    no_log: false
 
     # VM Profile definition
     vm_profile:
