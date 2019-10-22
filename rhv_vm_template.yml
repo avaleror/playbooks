@@ -20,8 +20,16 @@
       template: "{{ template }}"
       cluster: "{{ cluster }}"
       cpu_cores: "{{ vm_cores }}"
+      cpu_sockets: 1
       memory: "{{vm_memory}}"
+      storage_domain: data
+      operating_system: rhel_7x64
       high_availability: true
+      disks:
+        - name: rhel7_disk
+          bootable: True
+      nics:
+        - name: eth0
       state: running
       wait: yes
       
