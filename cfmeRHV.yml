@@ -8,8 +8,8 @@
     #- passwords.yml
 
   vars:
-    #engine_fqdn: rhvm.example.com
-    #engine_user: admin@internal
+    engine_fqdn: rhvm.example.com
+    engine_user: admin@internal
 
     miq_qcow_url: http://workstation.example.com/pub/cfme-rhevm-5.11.0.18-1.x86_64.qcow2
     miq_vm_name: cfme_510
