@@ -10,6 +10,7 @@
     template: RHEL-7.6
     vm_memory: 2GiB
     vm_name: test-vm03
+    disk_size: 10GiB
 
   tasks:
   - name: Create and run VM from template
@@ -26,7 +27,7 @@
     ovirt_disk:
       name: "{{ vm_name }}_disk"
       vm_name: "{{ vm_name }}"
-      size: 10GiB
+      size: "{{ disk_size }}"
       format: cow
       interface: virtio
       storage_domain: data
