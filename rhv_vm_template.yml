@@ -25,9 +25,6 @@
       storage_domain: data
       operating_system: rhel_7x64
       high_availability: true
-      disks:
-        - name: rhel7_disk
-          bootable: True
       nics:
         - name: eth0
       state: running
