@@ -14,7 +14,7 @@
   tasks:
   - name: Create and run VM from template
     ovirt_vms:
-     auth: "{{ ovirt_auth }}"
+      auth: "{{ ovirt_auth }}"
       name: "{{ vm_name }}"
       template: "{{ template }}"
       cluster: "{{ cluster }}"
