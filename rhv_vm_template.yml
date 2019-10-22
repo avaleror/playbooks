@@ -1,34 +1,24 @@
 ---
-- name: Deploy VM in RHV
+- name: RHV infrastructure
   hosts: localhost
   connection: local
   gather_facts: false
 
-#  vars_files:
-#    # Contains encrypted `engine_password` variable using ansible-vault
-#    - passwords.yml
-
   vars:
-    wait_for_ip: true
+    datacenter: Default
+    cluster: Default
+    template: RHEL-7.6
+    vm_memory: 2GiB
+    vm_name: test-vm01
 
-    test_vm:
-      cluster: Default
-      state: running
-      domain: example.com
-      template: RHEL-7.6
-      memory: 2GiB
-      cores: 2
-      #ssh_key: ssh-rsa AAA...LGx user@fqdn
-      disks:
-        - size: 20GiB
-          name: data
-          storage_domain: data
-          interface: virtio
-
-    vms:
-      - name: testvm0002
-        tag: test
-        profile: "{{ test_vm }}"
-
-  roles:
-    - ovirt.vm-infra
+  tasks:
+  - name: Create and run VM from template
+    ovirt_vms:
+     auth: "{{ ovirt_auth }}"
+      name: "{{ vm_name }}"
+      template: "{{ template }}"
+      cluster: "{{ cluster }}"
+      memory: "{{vm_memory}}"
+      high_availability: true
+      state: present
+      wait: yes
