@@ -22,10 +22,10 @@
       state: running
       wait: yes
       
-   - name: Attach disk
-     ovirt_disks:
-       name: "{{ vm_name }}_disk"
-       vm_name: "{{ vm_name }}"
-       size: 10GiB
-       format: cow
-       interface: virtio
+  - name: Attach disk
+    ovirt_disks:
+      name: "{{ vm_name }}_disk"
+      vm_name: "{{ vm_name }}"
+      size: 10GiB
+      format: cow
+      interface: virtio
