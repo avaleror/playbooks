@@ -9,7 +9,7 @@
     cluster: Default
     template: RHEL-7.6
     vm_memory: 2GiB
-    vm_name: test-vm01
+    vm_name: test-vm02
 
   tasks:
   - name: Create and run VM from template
@@ -20,5 +20,5 @@
       cluster: "{{ cluster }}"
       memory: "{{vm_memory}}"
       high_availability: true
-      state: present
+      state: running
       wait: yes
