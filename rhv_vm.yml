@@ -2,13 +2,14 @@
   hosts: localhost
   connection: local
   gather_facts: true
-  no_log: false
+#  no_log: false
 
   vars:
 #    engine_url: https://ovirt-engine.example.com/ovirt-engine/api
 #    engine_user: admin@internal
 #    engine_password: 123456
 #    engine_cafile: /etc/pki/ovirt-engine/ca.pem
+     no_log: false
 
     # VM Profile definition
     vm_profile:
@@ -34,14 +35,13 @@
     vms:
       - name: "{{ vm_name }}"
         profile: "{{ vm_profile }}"
-#        cloud_init: "{{ vm_cloud_init }}"
-#        cloud_init_nics: "{{ vm_cloud_init_nics }}"
+        cloud_init: "{{ vm_cloud_init }}"
+        cloud_init_nics: "{{ vm_cloud_init_nics }}"
         tag: "{{ vm_tag }}"
 
   roles:
     - role: "ovirt.vm-infra"
       wait_for_ip: True
       debug_vm_create: True
-      no_log: false
       vm_infra_wait_for_ip_retries: 50
       vm_infra_wait_for_ip_delay: 20
