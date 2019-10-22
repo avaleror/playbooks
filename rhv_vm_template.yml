@@ -23,7 +23,7 @@
       wait: yes
       
   - name: Attach disk
-    ovirt_disks:
+    ovirt_disk:
       name: "{{ vm_name }}_disk"
       vm_name: "{{ vm_name }}"
       size: 10GiB
