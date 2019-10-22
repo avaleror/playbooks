@@ -1,7 +1,7 @@
 - name: "Create instance from template in oVirt"
   hosts: localhost
   connection: local
-  gather_facts: false
+  gather_facts: true
   no_log: false
 
   vars:
