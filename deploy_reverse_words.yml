@@ -29,14 +29,14 @@
   - name: Create a Deployment object by reading the definition from a file
     k8s:
       state: present
-      src: "{{ downloadpath }}"/reverse-deploy.yaml
+      src: "{{ downloadpath }}/reverse-deploy.yaml"
 
   - name: Create a Service object by reading the definition from a file
     k8s:
       state: present
-      src: "{{ downloadpath }}"/reverse-service.yaml
-
+      src: "{{ downloadpath }}/reverse-service.yaml"
+2
   - name: Create a route to our service inside the cluster
     k8s:
       state: present
-      src: "{{ downloadpath }}"/route-reverse.yaml 
+      src: "{{ downloadpath }}/route-reverse.yaml"
