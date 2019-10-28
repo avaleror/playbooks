@@ -2,7 +2,6 @@
 - name: Reverse-words in OpenShift (the access to the cluster has been provided using env vars)
   hosts: localhost
   connection: local
-  gather_facts: false
 
   vars:
     downloadpath: /srv/git
