@@ -1,0 +1,27 @@
+---
+- name: Reverse-words Service in OpenShift (the access to the cluster has been provided using env vars)
+  hosts: localhost
+  connection: local
+
+  tasks:
+  - name: Create a Service object from an inline definition
+    k8s:
+      state: present
+      definition:
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: reverse-words
+          namespace: default
+          labels:
+            app: reverse-words
+            service: web
+        spec:
+          selector:
+            app: reverse-words
+            service: web
+          ports:
+          - protocol: TCP
+            targetPort: http
+            name: port-8000-tcp
+            port: 8080
