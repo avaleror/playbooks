@@ -1,0 +1,42 @@
+---
+- name: Reverse-words in OpenShift (the access to the cluster has been provided using env vars)
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    downloadpath: /srv/git
+
+  tasks:
+  - name: Get reverse-words deployment from git
+    get_url:
+      url: "https://github.com/avaleror/kubestuff/blob/master/reverse-words-master/reverse-deploy.yaml"
+      dest: /srv/git
+      mode: 0755
+
+  - name: Get reverse-words Service from git
+    get_url:
+      url: "https://github.com/avaleror/kubestuff/blob/master/reverse-words-master/reverse-service.yaml"
+      dest: /srv/git
+      mode: 0755
+
+  - name: Get reverse-words route from git
+    get_url:
+      url: "https://github.com/avaleror/kubestuff/blob/master/reverse-words-master/route-reverse.yaml"
+      dest: /srv/git
+      mode: 0755
+
+  - name: Create a Deployment object by reading the definition from a file
+    k8s:
+      state: present
+      src: "{{ downloadpath }}/reverse-deploy.yaml
+
+  - name: Create a Service object by reading the definition from a file
+    k8s:
+      state: present
+      src: "{{ downloadpath }}/reverse-service.yaml
+
+  - name: Create a route to our service inside the cluster
+    k8s:
+      state: present
+      src: "{{ downloadpath }}/route-reverse.yaml 
