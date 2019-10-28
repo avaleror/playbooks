@@ -35,7 +35,7 @@
     k8s:
       state: present
       src: "{{ downloadpath }}/reverse-service.yaml"
-2
+
   - name: Create a route to our service inside the cluster
     k8s:
       state: present
