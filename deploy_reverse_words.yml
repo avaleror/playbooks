@@ -7,7 +7,7 @@
     downloadpath: /srv/git
 
   vars_files:
-    - /vars/kubeinfo.yml
+    - vars/kubeinfo.yml
 
   tasks:
   
