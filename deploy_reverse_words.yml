@@ -24,18 +24,28 @@
       url: "https://github.com/avaleror/kubestuff/blob/master/reverse-words-master/route-reverse.yaml"
       dest: /srv/git
       mode: 0755
+      
+  - name: Ensure ArgoCD template is instantiated
+    shell: oc create -f "{{ downloadpath }}/reverse-deploy.yaml"
 
-  - name: Create a Deployment object by reading the definition from a file
-    k8s:
-      state: present
-      src: "{{ downloadpath }}/reverse-deploy.yaml"
+#  - name: Create a Deployment object by reading the definition from a file
+#    k8s:
+#      state: present
+#      src: "{{ downloadpath }}/reverse-deploy.yaml"
 
-  - name: Create a Service object by reading the definition from a file
-    k8s:
-      state: present
-      src: "{{ downloadpath }}/reverse-service.yaml"
+  - name: Ensure ArgoCD template is instantiated
+    shell: oc create -f "{{ downloadpath }}/reverse-service.yaml"
+    
+#  - name: Create a Service object by reading the definition from a file
+#    k8s:
+#      state: present
+#      src: "{{ downloadpath }}/reverse-service.yaml"
 
-  - name: Create a route to our service inside the cluster
-    k8s:
-      state: present
-      src: "{{ downloadpath }}/route-reverse.yaml"
+
+  - name: Ensure ArgoCD template is instantiated
+    shell: oc create -f "{{ downloadpath }}/route-reverse.yaml"
+    
+#  - name: Create a route to our service inside the cluster
+#    k8s:
+#      state: present
+#      src: "{{ downloadpath }}/route-reverse.yaml"
