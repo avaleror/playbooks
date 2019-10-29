@@ -40,7 +40,7 @@
 #      state: present
 #      src: "{{ downloadpath }}/reverse-deploy.yaml"
 
-  - name: Ensure ArgoCD template is instantiated
+  - name: Create reverse words service from file
     shell: oc create -f "{{ downloadpath }}/reverse-service.yaml"
     
 #  - name: Create a Service object by reading the definition from a file
@@ -49,7 +49,7 @@
 #      src: "{{ downloadpath }}/reverse-service.yaml"
 
 
-  - name: Ensure ArgoCD template is instantiated
+  - name: Create reverse words route from file
     shell: oc create -f "{{ downloadpath }}/route-reverse.yaml"
     
 #  - name: Create a route to our service inside the cluster
