@@ -10,8 +10,8 @@
     oc_pass: "{{ lookup('env','K8S_AUTH_PASSWORD') }}"
 
   tasks:
-  - debug: Env vars
-      msg: "{{ oc_host }}" 
+    - debug: Env vars
+        msg: "{{ oc_host }}" 
     
   - name: Get reverse-words deployment from git
     get_url:
