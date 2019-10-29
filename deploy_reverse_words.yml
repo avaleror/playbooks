@@ -30,7 +30,7 @@
       mode: 0755
   
   - name: Login in OpenShift host "{{ oc_host }}"
-    shell: oc login "{{ kubehost }} -u {{ kubeuser }} -p {{ kubepass }}"
+    shell: oc login {{ kubehost }} -u {{ kubeuser }} -p {{ kubepass }}
     
   - name: Create reverse words deployment from file
     shell: oc create -f "{{ downloadpath }}/reverse-deploy.yaml"
