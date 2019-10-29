@@ -11,7 +11,7 @@
 
   tasks:
   - debug: Env vars
-    msg: "{{ oc_host }}, {{ oc_user }}, {{ oc_pass }}"
+      msg: "{{ oc_host }}, {{ oc_user }}, {{ oc_pass }}"
     
   - name: Get reverse-words deployment from git
     get_url:
