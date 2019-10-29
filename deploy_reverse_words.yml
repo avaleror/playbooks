@@ -5,9 +5,9 @@
 
   vars:
     downloadpath: /srv/git
-    oc_host: "{{ lookup('env','K8S_AUTH_HOST') }}"
-    oc_user: "{{ lookup('env','K8S_AUTH_USERNAME') }}"
-    oc_pass: "{{ lookup('env','K8S_AUTH_PASSWORD') }}"
+
+  vars_files:
+    - /vars/kubeinfo.yml
 
   tasks:
   
@@ -30,7 +30,7 @@
       mode: 0755
   
   - name: Login in OpenShift host "{{ oc_host }}"
-    shell: oc login "{{ oc_host }} -u {{ oc_user }} -p {{ oc_pass }}"
+    shell: oc login "{{ kubehost }} -u {{ kubeuser }} -p {{ kubepass }}"
     
   - name: Create reverse words deployment from file
     shell: oc create -f "{{ downloadpath }}/reverse-deploy.yaml"
