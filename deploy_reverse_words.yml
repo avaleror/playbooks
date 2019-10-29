@@ -24,8 +24,11 @@
       url: "https://github.com/avaleror/kubestuff/blob/master/reverse-words-master/route-reverse.yaml"
       dest: /srv/git
       mode: 0755
-      
-  - name: Ensure ArgoCD template is instantiated
+  
+  - name: Login in OpenShift
+    shell: oc login $K8S_AUTH_HOST -u $K8S_AUTH_USERNAME -p $K8S_AUTH_PASSWORD
+    
+  - name: Create reverse words deployment from file
     shell: oc create -f "{{ downloadpath }}/reverse-deploy.yaml"
 
 #  - name: Create a Deployment object by reading the definition from a file
@@ -49,3 +52,6 @@
 #    k8s:
 #      state: present
 #      src: "{{ downloadpath }}/route-reverse.yaml"
+
+  - name: Logout OpenShift
+    shell: oc logout
