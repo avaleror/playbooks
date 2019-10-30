@@ -23,7 +23,7 @@
     shell: oc delete -f "{{ service }}"
 
   - name: Remove reverse words deployment from file
-    shell: oc delete -f "{{ deploy }}"
+    shell: oc delete -f "{{ deployment }}"
 
   - name: Logout OpenShift
     shell: oc logout
