@@ -13,19 +13,19 @@
   
   - name: Get reverse-words deployment from git
     get_url:
-      url: "https://github.com/avaleror/kubestuff/blob/master/reverse-words-master/reverse-deploy.yaml"
+      url: "https://raw.githubusercontent.com/avaleror/kubestuff/master/reverse-words-master/reverse-deploy.yaml"
       dest: /srv/git
       mode: 0755
 
   - name: Get reverse-words Service from git
     get_url:
-      url: "https://github.com/avaleror/kubestuff/blob/master/reverse-words-master/reverse-service.yaml"
+      url: "https://raw.githubusercontent.com/avaleror/kubestuff/master/reverse-words-master/reverse-service.yaml"
       dest: /srv/git
       mode: 0755
 
   - name: Get reverse-words route from git
     get_url:
-      url: "https://github.com/avaleror/kubestuff/blob/master/reverse-words-master/route-reverse.yaml"
+      url: "https://raw.githubusercontent.com/avaleror/kubestuff/master/reverse-words-master/reverse-service.yaml"
       dest: /srv/git
       mode: 0755
   
