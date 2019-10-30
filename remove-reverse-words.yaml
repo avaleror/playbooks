@@ -16,13 +16,13 @@
   - name: Login in OpenShift host "{{ oc_host }}"
     shell: oc login {{ kubehost }} -u {{ kubeuser }} -p {{ kubepass }} --insecure-skip-tls-verify
     
-  - name: Create reverse words route from file
+  - name: Remove reverse words route from file
     shell: oc delete -f "{{ route }}"
 
-  - name: Create reverse words service from file
+  - name: Remove reverse words service from file
     shell: oc delete -f "{{ service }}"
 
-  - name: Create reverse words deployment from file
+  - name: Remove reverse words deployment from file
     shell: oc delete -f "{{ deploy }}"
 
   - name: Logout OpenShift
