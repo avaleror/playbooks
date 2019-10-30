@@ -25,7 +25,7 @@
 
   - name: Get reverse-words route from git
     get_url:
-      url: "https://raw.githubusercontent.com/avaleror/kubestuff/master/reverse-words-master/reverse-service.yaml"
+      url: "https://raw.githubusercontent.com/avaleror/kubestuff/master/reverse-words-master/route-reverse.yaml"
       dest: /srv/git
       mode: 0755
   
