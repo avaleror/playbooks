@@ -29,7 +29,7 @@
     shell: oc logout
 
   - name: test reverse words 
-    shell: curl -k {{ reverseapi }} -X POST -d '{"word":"ECIN"}'
+    shell: curl -k "{{ reverseapi }}" -X POST -d '{"word":"ECIN"}'
     register: output
 
   - name: Print the reverse works output
