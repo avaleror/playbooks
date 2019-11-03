@@ -34,4 +34,4 @@
 
   - name: Print the reverse works output
     debug:
-      msg:  "{{ output }}
+      msg:  "{{ output }}"
