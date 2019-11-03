@@ -33,5 +33,5 @@
     register: output
 
   - name: Print the reverse works output
-      debug:
-        msg:  "{{ output }}
+    debug:
+      msg:  "{{ output }}
